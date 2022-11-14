@@ -9,9 +9,9 @@
     "author": "Robin",
     "license": "ISC",
     "bugs": {
-      "url": ""
+      "url": "https://github.com/Muezzin-ay/Werbetafel-Stadtverwaltung"
     },
-    "homepage": "",
+    "homepage": "https://github.com/Muezzin-ay/Werbetafel-Stadtverwaltung",
     "dependencies": {
       "express": "^4.17.1"
     }
