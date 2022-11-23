@@ -1,1 +1,1 @@
-#Projekt Werbetafel Stadtprojekt
+Projekt Werbetafel Stadtprojekt
