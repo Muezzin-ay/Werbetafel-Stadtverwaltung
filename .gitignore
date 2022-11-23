@@ -1,1 +1,17 @@
 /workplace.code-workspace
+/node_modules
+/config.json
+/public/slides/*.jpg
+/public/slides/*.JPG
+/public/src/bootstrap-5.2.2-dist/css
+/public/src/bootstrap-5.2.2-dist/js
+/public/src/reveal.js/css
+/public/src/reveal.js/dist
+/public/src/reveal.js/js
+/public/src/reveal.js/plugin
+/public/src/reveal.js/demo.html
+/public/src/reveal.js/index.html
+/public/src/reveal.js/LICENSE
+/public/src/reveal.js/package.json
+/public/src/reveal.js/README.md
+/public/src/vueJs/vue.js

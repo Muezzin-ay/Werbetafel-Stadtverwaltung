@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+
+    <link rel="stylesheet" href="./src/bootstrap-5.2.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./src/components/sort-list.css">
+
+    <!-- Own Styles -->
+    <link rel="stylesheet" href="./src/components/panel.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="./src/bootstrap-5.2.2-dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Own Code -->
+    <script src="./src/components/init_panel.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark navbar-settings">
+        <a class="navbar-brand" href="#">
+            <img src="./media/admin-panel-logo.jpg" width="30" height="30" alt="avatar" style="border-radius: 50%;" class="d-inline-block align-top">
+            Admin Panel
+        </a>
+        <ul class="navbar-nav mr-autom navbar-right">
+            <li class="nav-item">
+                <a href="/">
+                    <button class="btn btn-secondary">Preview</button>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Main part settings -->
+    <div class="container-settings">
+        <ul class="slide-preview list-group" id="slide-preview">
+        </ul>
+    </div>
+
+    <div class="apply-button-container">
+        <button type="button" class="btn btn-primary" id="apply-config">Upload</button>
+    </div>
+    
+</body>
+</html>
