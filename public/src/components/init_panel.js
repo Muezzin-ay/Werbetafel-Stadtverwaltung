@@ -24,9 +24,11 @@ function slist (target) {
       };
   
       // (B4) DRAG LEAVE - REMOVE RED HIGHLIGHT
+      
       i.ondragleave = () => {
         i.classList.remove("active");
       };
+      
   
       // (B5) DRAG END - REMOVE ALL HIGHLIGHTS
       i.ondragend = () => { for (let it of items) {
