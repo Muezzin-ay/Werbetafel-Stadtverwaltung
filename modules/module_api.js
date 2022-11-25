@@ -5,16 +5,20 @@ const multer = require('multer');
 const fs = require('fs');
 const bodyParser = require('body-parser');
 
+
 // Own Modules
 const handle_config = require('./handle_config');
 
-// Constants
-const photoDest = './public/slides/';
-const api = express.Router();
-const upload = multer({ dest:  photoDest})
 
+// Constants
+const api = express.Router();
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({extended:true}))
+
+
+const photoDest = './public/slides/';
+const upload = multer({ dest:  photoDest})
+
 
 
 api.get('/sequence', function(req, res) {
@@ -32,7 +36,7 @@ api.get('/sequence', function(req, res) {
 api.post('/sequence', function(req, res) {
     try {
         handle_config.saveConfig(req.body)
-        console.log("[API] Changed Configuration!");
+        console.log("[API] Configuration changed");
 
     } catch (error) {
         res.status(500).send('Server is occured.')
@@ -42,7 +46,7 @@ api.post('/sequence', function(req, res) {
 
 
 
-
+/*
 
 api.post('/fileupload', upload.array('photos', 12), function(req, res) {
     try {
@@ -60,6 +64,8 @@ api.post('/fileupload', upload.array('photos', 12), function(req, res) {
         console.log(error);
     }
 });
+
+*/
 
 
 

@@ -4,20 +4,16 @@
     padding-right: 0.5cm;
 }
 
-
-.main-container {
+.tab-controller {
+    margin: 10px;
 }
 
 .container-settings {
     position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-15%, 0);
 }
 
 .slide-item {
     display: flex;
-    width: 30%;
 }
 
 .container-img {

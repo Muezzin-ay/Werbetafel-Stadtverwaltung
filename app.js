@@ -22,4 +22,4 @@ app.use('/api', api);
 app.use('/', express.static(__dirname + "/public"))
 
 var server = http.createServer(app).listen(PORT);
-console.log('Server listening on Port ' + PORT);
+console.log('[SERVER] Listening on Port ' + PORT);
