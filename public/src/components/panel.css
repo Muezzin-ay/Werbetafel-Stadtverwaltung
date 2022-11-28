@@ -8,7 +8,7 @@
     margin: 10px;
 }
 
-.container-settings {
+.slide-listing {
     position: relative;
 }
 
@@ -26,6 +26,13 @@
 }
 
 .apply-button-container {
+    position: fixed;
+    bottom: 1cm;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.add-button-container {
     position: fixed;
     bottom: 1cm;
     right: 1cm;

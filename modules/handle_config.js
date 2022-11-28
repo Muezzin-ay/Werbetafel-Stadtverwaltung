@@ -18,7 +18,14 @@ module.exports = {
                 console.log(err);
             }
         })
+    },
+
+    saveSequence : function(sequence) {
+        let configData = this.loadConfig();
+        configData.sequence = sequence;
+        this.saveConfig(configData);
     }
+
 }
 
 

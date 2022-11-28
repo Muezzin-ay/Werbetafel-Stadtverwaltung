@@ -52,7 +52,7 @@
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
             <!-- Slide Listing -->
-            <div class="container-settings">
+            <div class="slide-listing">
                 <ul class="slide-preview list-group" id="slide-preview">
                 </ul>
             </div>
@@ -65,9 +65,17 @@
     
     
 
-<!-- Statics-->
+<!-- Statics <label class="add-button" for="actual-btn">Hinzufügen</label> -->
 <div class="apply-button-container">
     <button type="button" class="btn btn-primary" id="apply-config">Save</button>
+</div>
+
+
+<div class="add-button-container">
+    <form action="/api/fileupload" enctype="multipart/form-data" accept="image/jpg" method="POST">
+        <input type="file" class="admin__input" id="uploadedFile" name="uploadedFile" />
+        <input class="admin__submit" type="submit" />
+    </form>
 </div>
 
 </body>

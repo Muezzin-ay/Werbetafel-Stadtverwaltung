@@ -35,7 +35,7 @@ api.get('/sequence', function(req, res) {
 
 api.post('/sequence', function(req, res) {
     try {
-        handle_config.saveConfig(req.body)
+        handle_config.saveSequence(req.body.sequence)
         console.log("[API] Configuration changed");
 
     } catch (error) {
@@ -46,16 +46,20 @@ api.post('/sequence', function(req, res) {
 
 
 
-/*
 
-api.post('/fileupload', upload.array('photos', 12), function(req, res) {
+api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
     try {
-        fs.readdir( photoDest, function(error, files) {  
-            let totalFiles = files.length; // return the number of files
-            let oldPath = photoDest + req.files[0].filename;
-            let newPath = photoDest + totalFiles + '.jpg'
+        fs.readdir( photoDest, function(error, files) { 
+
+            let config = handle_config.loadConfig();
+            config.registered += 1;
+            config.sequence.push(config.registered.toString());
+            handle_config.saveConfig(config);
+            
+            let oldPath = photoDest + req.file.filename
+            let newPath = photoDest + config.registered + '.JPG'
             fs.rename(oldPath, newPath, function () {
-                res.send('Upload complete!')
+                res.status(200).send('All good');
             });
         });
 
@@ -64,8 +68,6 @@ api.post('/fileupload', upload.array('photos', 12), function(req, res) {
         console.log(error);
     }
 });
-
-*/
 
 
 
