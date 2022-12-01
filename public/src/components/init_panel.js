@@ -103,7 +103,7 @@ function saveConfig() {
         type: "POST",
         data: configData,
         success: function(d) {
-            alert("successs "+ JSON.stringify(d));
+            alert("Success: "+ JSON.stringify(d));
         }
     });
 
