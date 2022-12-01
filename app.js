@@ -1,4 +1,9 @@
-
+/*
+    Head File 'Werbetafel'-Project
+    Author: Robin Hart
+    Creation date: 04.11.22
+    Github: https://github.com/Muezzin-ay/Werbetafel-Stadtverwaltung
+*/
 
 var http = require('http');
 var express = require('express');
