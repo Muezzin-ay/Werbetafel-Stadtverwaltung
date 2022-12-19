@@ -51,10 +51,12 @@ api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
     try {
         fs.readdir(slideDest, function(error, files) {
             let oldPath = slideDest + req.file.filename
-            let newPath = slideDest + "power" + '.pptx'
+            let newPath = slideDest + 'power.pptx'
             fs.rename(oldPath, newPath, function () {
-                convert.convertPP(newPath, slideDest + "power/");
-                res.sendStatus(200);
+                convert.convertPP(newPath, slideDest + "power/", function () {
+                    //fs.unlink(newPath);
+                    res.sendStatus(200);
+                });
             });
         })
         /*

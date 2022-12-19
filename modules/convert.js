@@ -4,7 +4,7 @@ const fs = require('fs');
 
 // './Screnndesign__MüllerCl_GrabherLi_TGG12.pptx'
 module.exports = {
-    convertPP : function(file, out) {
+    convertPP : function(file, out, func) {
         if (!(fs.existsSync(out))) {
             fs.mkdirSync(out);
         };
@@ -22,5 +22,7 @@ module.exports = {
         'pptx').then(function(result) {
             result.saveFiles(out);
         });
+
+        func();
     }    
 }
