@@ -8,6 +8,7 @@ module.exports = {
         if (!(fs.existsSync(out))) {
             fs.mkdirSync(out);
         };
+        console.log("[CONVERTER] ...")
         convertapi.convert('jpg', {
             File: file,
             ImageResolutionH: '300',
@@ -20,9 +21,10 @@ module.exports = {
             ImageInterpolation: 'true',
         },
         'pptx').then(function(result) {
+            console.log("[CONVERTER] Saving File to " + out)
             result.saveFiles(out);
+            func();
         });
-
-        func();
+        //func(); //Only for dev purpose
     }    
 }

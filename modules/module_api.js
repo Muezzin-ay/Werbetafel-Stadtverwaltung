@@ -50,12 +50,12 @@ api.post('/sequence', function(req, res) {
 api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
     try {
         fs.readdir(slideDest, function(error, files) {
-            let oldPath = slideDest + req.file.filename
-            let newPath = slideDest + 'power.pptx'
+            let oldPath = slideDest + req.file.filename;
+            let newPath = slideDest + req.file.originalname;
             fs.rename(oldPath, newPath, function () {
-                convert.convertPP(newPath, slideDest + "power/", function () {
-                    //fs.unlink(newPath);
-                    res.sendStatus(200);
+                convert.convertPP(newPath, slideDest + "out/", function () {
+                    fs.unlinkSync(newPath); //Delete old file
+                    res.redirect('/panel.html'); //Redirect to Startpage
                 });
             });
         })
