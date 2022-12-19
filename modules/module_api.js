@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 // Own Modules
 const handle_config = require('./handle_config');
-
+const convert = require('./convert');
 
 // Constants
 const api = express.Router();
@@ -16,8 +16,8 @@ api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({extended:true}));
 
 
-const photoDest = './public/slides/';
-const upload = multer({ dest:  photoDest})
+const slideDest = './public/slides/';
+const upload = multer({ dest:  slideDest})
 
 
 
@@ -49,20 +49,29 @@ api.post('/sequence', function(req, res) {
 
 api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
     try {
-        console.log(req)
-        fs.readdir( photoDest, function(error, files) { 
+        fs.readdir(slideDest, function(error, files) {
+            let oldPath = slideDest + req.file.filename
+            let newPath = slideDest + "power" + '.pptx'
+            fs.rename(oldPath, newPath, function () {
+                convert.convertPP(newPath, slideDest);
+                res.sendStatus(200);
+            });
+        })
+        /*
+        fs.readdir( slideDest, function(error, files) { 
 
             let config = handle_config.loadConfig();
             config.registered += 1;
             config.sequence.push(config.registered.toString());
             handle_config.saveConfig(config);
             
-            let oldPath = photoDest + req.file.filename
-            let newPath = photoDest + config.registered + '.jpg'
+            let oldPath = slideDest + req.file.filename
+            let newPath = slideDest + config.registered + '.jpg'
             fs.rename(oldPath, newPath, function () {
                 res.status(200).send('All good');
             });
         });
+        */
 
     } catch (error) {
         res.status(500).send('Server is occured.')
