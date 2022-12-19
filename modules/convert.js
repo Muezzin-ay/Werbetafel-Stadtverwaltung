@@ -1,8 +1,19 @@
-const ConvertApi =  require('convertapi-js')
-let convertApi = ConvertApi.auth('DpHcMRRXg49vUJDQ')
-let params = convertApi.createParams()
-params.add('File', elFileInput.files[0]);
-params.add('FileName', 'test');
-params.add('ImageHeight', '2160');
-params.add('ImageWidth', '3840');
-let result = convertApi.convert('pptx', 'png', params)
+
+
+var convertapi = require('convertapi')('DpHcMRRXg49vUJDQ');
+
+convertapi.convert('jpg', 
+{
+    File: './Screnndesign__MüllerCl_GrabherLi_TGG12.pptx',
+    ImageResolutionH: '300',
+    ImageResolutionV: '300',
+    ImageWidth: '3840',
+    ImageHeight: '2160',
+    ScaleImage: 'true',
+    TextAntialiasing: '4',
+    GraphicsAntialiasing: '4',
+    ImageInterpolation: 'true',
+},
+'pptx').then(function(result) {
+    result.saveFiles('./out/');
+});
