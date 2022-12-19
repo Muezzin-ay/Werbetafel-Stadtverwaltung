@@ -3,6 +3,7 @@ const convertapi = require('convertapi')('DpHcMRRXg49vUJDQ');
 const fs = require('fs');
 
 // './Screnndesign__MüllerCl_GrabherLi_TGG12.pptx'
+
 module.exports = {
     convertPP : function(file, out, func) {
         if (!(fs.existsSync(out))) {
@@ -19,12 +20,13 @@ module.exports = {
             TextAntialiasing: '4',
             GraphicsAntialiasing: '4',
             ImageInterpolation: 'true',
+            FileName: 'img'
         },
-        'pptx').then(function(result) {
+        //Function must be async -> Only continue when files are saved
+        'pptx').then(async function(result) { 
             console.log("[CONVERTER] Saving File to " + out)
-            result.saveFiles(out);
+            await result.saveFiles(out); //Wait for Files to be saved
             func();
         });
-        //func(); //Only for dev purpose
     }    
 }

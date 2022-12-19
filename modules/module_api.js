@@ -53,20 +53,16 @@ api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
             let oldPath = slideDest + req.file.filename;
             let newPath = slideDest + req.file.originalname;
             fs.rename(oldPath, newPath, function () {
-                convert.convertPP(newPath, slideDest + "out/", function () {
-                    fs.unlinkSync(newPath); //Delete old file
+                let imageOut = slideDest + "out/"
+                convert.convertPP(newPath, imageOut, function () {
+                    fs.unlinkSync(newPath); //Delete powerpoint file
+                    handle_config.moveSlides();
                     res.redirect('/panel.html'); //Redirect to Startpage
                 });
             });
         })
         /*
         fs.readdir( slideDest, function(error, files) { 
-
-            let config = handle_config.loadConfig();
-            config.registered += 1;
-            config.sequence.push(config.registered.toString());
-            handle_config.saveConfig(config);
-            
             let oldPath = slideDest + req.file.filename
             let newPath = slideDest + config.registered + '.jpg'
             fs.rename(oldPath, newPath, function () {
