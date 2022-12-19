@@ -53,7 +53,7 @@ api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
             let oldPath = slideDest + req.file.filename
             let newPath = slideDest + "power" + '.pptx'
             fs.rename(oldPath, newPath, function () {
-                convert.convertPP(newPath, slideDest);
+                convert.convertPP(newPath, slideDest + "power/");
                 res.sendStatus(200);
             });
         })
