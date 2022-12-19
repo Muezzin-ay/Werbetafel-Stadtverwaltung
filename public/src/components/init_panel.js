@@ -78,16 +78,31 @@ function loadSlidePreview() {
                     <h2>This is Advertise number ${i}</h2>
                     <h3></h3>
                 </div>
+
+                <button class="btn btn-primary" onclick=removeSelf(this)>Trash</button>
                 
             </li>
             `
-
             $('#slide-preview').append(element);
         };
         $.holdReady( false );
     });
 };
 
+
+function removeSelf(el) {
+    $(el).closest('.slide-item').remove();
+    $.ajax({
+        url: '/api/deleteSlide',
+        type: "POST",
+        data: {'id': "" + id},
+        success: function(d) {
+            alert("Success: "+ JSON.stringify(d));
+        }
+    });
+
+
+}
 
 
 function saveConfig() {

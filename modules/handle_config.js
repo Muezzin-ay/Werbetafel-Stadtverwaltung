@@ -50,6 +50,11 @@ module.exports = {
                 })
             }
         });
+    },
+
+    deleteSlide : function(id) {
+        let configData = this.loadConfig();
+        
     }
 
 }
