@@ -111,10 +111,12 @@ function saveConfig() {
 };
 
 
-
+// Startup
 $.holdReady( true );
 $(window).load(loadSlidePreview);
 
+
+// Run
 $(document).ready(function () {
     //Apply config button for when settings are changed
     $('#apply-config').hide();

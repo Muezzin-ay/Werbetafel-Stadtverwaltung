@@ -49,6 +49,7 @@ api.post('/sequence', function(req, res) {
 
 api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
     try {
+        console.log(req)
         fs.readdir( photoDest, function(error, files) { 
 
             let config = handle_config.loadConfig();
@@ -57,7 +58,7 @@ api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
             handle_config.saveConfig(config);
             
             let oldPath = photoDest + req.file.filename
-            let newPath = photoDest + config.registered + '.JPG'
+            let newPath = photoDest + config.registered + '.jpg'
             fs.rename(oldPath, newPath, function () {
                 res.status(200).send('All good');
             });
