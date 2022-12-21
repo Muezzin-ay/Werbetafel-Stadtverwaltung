@@ -46,7 +46,8 @@ api.post('/sequence', function(req, res) {
 api.post('/setVisibility', (req, res) => {
     try {
         let id = req.body.id;
-        if (req.body.hidden == true) {
+        console.log(`[API] Changing visibility of slide "${id}"`);
+        if (req.body.setHidden == "true") {
             handle_config.setHidden(id);
         }
         else {
@@ -79,7 +80,7 @@ api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
 });
 api.post('/deleteSlide', function (req, res) {
     try {
-        console.log(`[SERVER] Removing File "${req.body.id}"`);
+        console.log(`[API] Removing File "${req.body.id}"`);
         handle_config.deleteSlide(req.body.id, () => {
         });
     } catch (error) {

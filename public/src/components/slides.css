@@ -8,7 +8,7 @@
 }
 
 .hidden-slide {
-    background-color: gray !important;
+    background-color: rgb(169, 168, 168) !important;
 }
 
 .container-img {
@@ -24,6 +24,11 @@
     display: block;
     margin-left: auto;
     margin-right: 0;
+    height: 40px;
+}
+
+.hide-button {
+    display: block;
     height: 40px;
 }
 

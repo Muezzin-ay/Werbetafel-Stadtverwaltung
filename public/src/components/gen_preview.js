@@ -12,7 +12,8 @@ function genRegularSlide (id) {
                 <h3></h3>
             </div>
 
-            <button class="btn btn-danger delete-button" onclick=removeSelf(this)><i class="fa fa-trash"></i></button>
+            <button class="btn btn-danger delete-button" onclick=removeSlide(this)><i class="fa fa-trash"></i></button>
+            <button class="btn btn-danger hide-button" onclick=changeSlideVisbility(this)><i class="fa-solid fa-eye-slash"></i></button>
             
         </li>
         `
@@ -31,7 +32,8 @@ function genHiddenSlide(id) {
                 <h3></h3>
             </div>
 
-            <button class="btn btn-danger delete-button" onclick=removeSelf(this)><i class="fa fa-trash"></i></button>
+            <button class="btn btn-danger delete-button" onclick=removeSlide(this)><i class="fa fa-trash"></i></button>
+            <button class="btn btn-secondary hide-button" onclick=changeSlideVisbility(this)><i class="fa-solid fa-eye"></i></button>
             
         </li>
         `

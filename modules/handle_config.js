@@ -73,15 +73,14 @@ module.exports = {
         fs.unlink(`./public/slides/${id}.JPG`, func);
     },
 
-    setVisible : (id) => {
+    setVisible : function(id) {
         let configData = this.loadConfig();
-        this.saveConfig(
-            configData.hidden.filter((item) => { //filter out (delete) from sequence
-                return item !== id;
-            })
-        ); 
+        configData.hidden = configData.hidden.filter((item) => { //filter out (delete) from sequence
+            return item !== id;
+        })
+        this.saveConfig(configData); 
     },
-    setHidden : (id) => {
+    setHidden : function(id) {
         let configData = this.loadConfig();
         configData.hidden.push(id);
         this.saveConfig(configData);

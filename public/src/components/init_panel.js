@@ -83,7 +83,7 @@ function loadSlidePreview() {
 };
 
 
-function removeSelf(el) {
+function removeSlide(el) {
     let parent = $(el).closest('.slide-item');
     let id = parent.attr('id');
     parent.remove();
@@ -98,6 +98,28 @@ function removeSelf(el) {
     });
 
 
+}
+
+function changeSlideVisbility(el) {
+    let parent = $(el).closest('.slide-item');
+    let id = parent.attr('id');
+    let setHidden;
+    if (parent.hasClass('hidden-slide')) { //Is hidden at the moment
+        setHidden = false;
+        parent.replaceWith(genRegularSlide(id));
+    }
+    else { //Is not hidden jet
+        setHidden = true;
+        parent.replaceWith(genHiddenSlide(id));
+    }
+    $.ajax({
+        url: '/api/setVisibility',
+        type: "POST",
+        data: {'id': "" + id, "setHidden" : setHidden.toString()},
+        success: function(d) {
+            alert("Success: "+ JSON.stringify(d));
+        }
+    });
 }
 
 
