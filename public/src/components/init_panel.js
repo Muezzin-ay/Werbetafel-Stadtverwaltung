@@ -72,7 +72,7 @@ function loadSlidePreview() {
             `
             <li class="slide-item list-group-item" id="${i}">
                 <div class="container-img">
-                    <img src="/slides/${i}.jpg" width="192" height="108">
+                    <img src="/slides/${i}.JPG" width="192" height="108">
                 </div>
                 <div class="container-description">
                     <h2>This is Advertise number ${i}</h2>
