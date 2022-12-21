@@ -8,7 +8,7 @@ function genRegularSlide (id) {
                 <img src="/slides/${id}.JPG" width="192" height="108">
             </div>
             <div class="container-description">
-                <h2>This is Advertise number ${id}</h2>
+                <h2>${id}</h2>
                 <h3></h3>
             </div>
 
@@ -28,7 +28,7 @@ function genHiddenSlide(id) {
                 <img src="/slides/${id}.JPG" width="192" height="108">
             </div>
             <div class="container-description">
-                <h2>This is Advertise number ${id}</h2>
+                <h2>${id}</h2>
                 <h3></h3>
             </div>
 

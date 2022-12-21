@@ -23,7 +23,7 @@
 .delete-button {
     display: block;
     margin-left: auto;
-    margin-right: 0;
+    margin-right: 5px;
     height: 40px;
 }
 
