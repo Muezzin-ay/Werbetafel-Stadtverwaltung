@@ -91,7 +91,10 @@ function loadSlidePreview() {
 
 
 function removeSelf(el) {
-    $(el).closest('.slide-item').remove();
+    let parent = $(el).closest('.slide-item');
+    let id = parent.attr('id');
+    parent.remove();
+    
     $.ajax({
         url: '/api/deleteSlide',
         type: "POST",

@@ -80,7 +80,9 @@ api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
 
 api.post('/deleteSlide', function (req, res) {
     try {
-        console.log(req.body)
+        console.log(`[SERVER] Removing File "${req.body.id}"`);
+        handle_config.deleteSlide(req.body.id, () => {
+        });
     } catch (error) {
         res.status(500).send('Server is occured.')
         console.log(error);

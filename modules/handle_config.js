@@ -29,35 +29,45 @@ module.exports = {
 
     registerSlide : function(func) {
         let configData = this.loadConfig();
-        let reg = configData.sequence.length;
-        reg++;
-        configData.sequence.push(reg.toString());
+        let fileId = configData.sequence.length;
+        fileId++;
+        
+        // Look up available Ids
+        for (let i=1; i<fileId; i++) {
+            if (!(configData.sequence.includes(i.toString()))) {
+                fileId = i;
+                break;
+            }
+        }
+
+        configData.sequence.push(fileId.toString());
         this.saveConfig(configData);
-        func(reg);
+        func(fileId);
     },
 
     moveSlides : function() {
         let dest = './public/slides/out/';
         fs.readdir(dest, (error, files) => {
             for (let i=1; i<files.length+1; i++) {
-                this.registerSlide((reg) => {
+                this.registerSlide((fileId) => {
                     let filename = "img"
                     if (i!=1) {
                         filename += "-" + i;
                     };
                     filename += '.jpg';
-                    fs.rename(dest + filename, "./public/slides/" + reg + ".JPG", function() {})
+                    fs.rename(dest + filename, "./public/slides/" + fileId + ".JPG", function() {})
                 })
             }
         });
     },
 
-    deleteSlide : function(id) {
+    deleteSlide : function(id, func) {
         let configData = this.loadConfig();
-        
+        configData.sequence = configData.sequence.filter((item) => {
+            return item !== id;
+        });
+        this.saveConfig(configData);
+        fs.unlink(`./public/slides/${id}.JPG`, func);
     }
 
 }
-
-
-
