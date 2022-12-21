@@ -20,16 +20,7 @@ const slideDest = './public/slides/';
 const upload = multer({ dest:  slideDest})
 
 
-api.post('/sequence', function(req, res) {
-    try {
-        handle_config.saveSequence(req.body.sequence);
-        console.log("[API] Configuration changed");
 
-    } catch (error) {
-        res.status(500).send('Server is occured.');
-        console.log(error);
-    }
-});
 api.get('/sequence', function(req, res) {
     try {
         settings = handle_config.loadConfig();
@@ -40,9 +31,32 @@ api.get('/sequence', function(req, res) {
         console.log(error);
     }
 });
+api.post('/sequence', function(req, res) {
+    try {
+        handle_config.saveSequence(req.body.sequence);
+        console.log("[API] Configuration changed");
+
+    } catch (error) {
+        res.status(500).send('Server is occured.');
+        console.log(error);
+    }
+});
 
 
-
+api.post('/setVisibility', (req, res) => {
+    try {
+        let id = req.body.id;
+        if (req.body.hidden == true) {
+            handle_config.setHidden(id);
+        }
+        else {
+            handle_config.setVisible(id);
+        }
+    } catch (error) {
+        res.status(500).send('Server is occured.');
+        console.log(error);
+    }
+});
 
 api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
     try {

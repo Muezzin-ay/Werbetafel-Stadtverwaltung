@@ -71,6 +71,20 @@ module.exports = {
         });
         this.saveConfig(configData);
         fs.unlink(`./public/slides/${id}.JPG`, func);
+    },
+
+    setVisible : (id) => {
+        let configData = this.loadConfig();
+        this.saveConfig(
+            configData.hidden.filter((item) => { //filter out (delete) from sequence
+                return item !== id;
+            })
+        ); 
+    },
+    setHidden : (id) => {
+        let configData = this.loadConfig();
+        configData.hidden.push(id);
+        this.saveConfig(configData);
     }
 
 }

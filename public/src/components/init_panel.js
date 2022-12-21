@@ -67,22 +67,15 @@ function slist (target) {
 
 function loadSlidePreview() {
     $.get("/api/sequence", function(data) {
-        for (i of data.sequence) {
-            let element = 
-            `
-            <li class="slide-item list-group-item" id="${i}">
-                <div class="container-img">
-                    <img src="/slides/${i}.JPG" width="192" height="108">
-                </div>
-                <div class="container-description">
-                    <h2>This is Advertise number ${i}</h2>
-                    <h3></h3>
-                </div>
-
-                <button class="btn btn-danger delete-button" onclick=removeSelf(this)><i class="fa fa-trash"></i></button>
-                
-            </li>
-            `
+        for (id of data.sequence) {
+            let element;
+            // Set visibility
+            if (data.hidden.includes(id)) {
+                element = genHiddenSlide(id);
+            }
+            else {
+              element = genRegularSlide(id);
+            }
             $('#slide-preview').append(element);
         };
         $.holdReady( false );
