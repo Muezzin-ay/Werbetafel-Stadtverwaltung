@@ -20,23 +20,20 @@ const slideDest = './public/slides/';
 const upload = multer({ dest:  slideDest})
 
 
-
-api.get('/sequence', function(req, res) {
+api.post('/sequence', function(req, res) {
     try {
-        settings = handle_config.loadConfig();
-        res.json(settings.sequence);
+        handle_config.saveSequence(req.body.sequence);
+        console.log("[API] Configuration changed");
 
     } catch (error) {
         res.status(500).send('Server is occured.');
         console.log(error);
     }
 });
-
-
-api.post('/sequence', function(req, res) {
+api.get('/sequence', function(req, res) {
     try {
-        handle_config.saveSequence(req.body.sequence);
-        console.log("[API] Configuration changed");
+        settings = handle_config.loadConfig();
+        res.json(settings);
 
     } catch (error) {
         res.status(500).send('Server is occured.');
@@ -61,23 +58,11 @@ api.post('/fileupload', upload.single('uploadedFile'), function(req, res) {
                 });
             });
         })
-        /*
-        fs.readdir( slideDest, function(error, files) { 
-            let oldPath = slideDest + req.file.filename
-            let newPath = slideDest + config.registered + '.jpg'
-            fs.rename(oldPath, newPath, function () {
-                res.status(200).send('All good');
-            });
-        });
-        */
-
     } catch (error) {
         res.status(500).send('Server is occured.')
         console.log(error);
     }
 });
-
-
 api.post('/deleteSlide', function (req, res) {
     try {
         console.log(`[SERVER] Removing File "${req.body.id}"`);

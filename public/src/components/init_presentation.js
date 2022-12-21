@@ -3,9 +3,13 @@
 $.holdReady( true );
 $.ajax({
     url: "api/sequence",
-    success: function(data) {
+    success: function(settings) {
+        let data = settings.sequence;
+        let hidden = settings.hidden;
         for (let file of data) {
-            $(".slides").append('<section data-background="/slides/' + file + '.jpg"></section>');
+            if (!(hidden.includes(file))) {
+                $(".slides").append('<section data-background="/slides/' + file + '.jpg"></section>');
+            }
         };
         $.holdReady( false );
     },

@@ -63,7 +63,10 @@ module.exports = {
 
     deleteSlide : function(id, func) {
         let configData = this.loadConfig();
-        configData.sequence = configData.sequence.filter((item) => {
+        configData.sequence = configData.sequence.filter((item) => { //filter out (delete) from sequence
+            return item !== id;
+        });
+        configData.hidden = configData.hidden.filter((item) => { //filter out (delete) from hidden
             return item !== id;
         });
         this.saveConfig(configData);

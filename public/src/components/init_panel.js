@@ -67,7 +67,7 @@ function slist (target) {
 
 function loadSlidePreview() {
     $.get("/api/sequence", function(data) {
-        for (i of data) {
+        for (i of data.sequence) {
             let element = 
             `
             <li class="slide-item list-group-item" id="${i}">
@@ -79,7 +79,7 @@ function loadSlidePreview() {
                     <h3></h3>
                 </div>
 
-                <button class="btn btn-primary" onclick=removeSelf(this)>Trash</button>
+                <button class="btn btn-danger delete-button" onclick=removeSelf(this)><i class="fa fa-trash"></i></button>
                 
             </li>
             `
