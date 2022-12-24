@@ -8,7 +8,7 @@ $.ajax({
         let hidden = settings.hidden;
         for (let file of data) {
             if (!(hidden.includes(file))) {
-                $(".slides").append('<section data-background="/slides/' + file + '.jpg"></section>');
+                $(".slides").append('<section data-background="/slides/' + file + '.JPG"></section>');
             }
         };
         $.holdReady( false );
