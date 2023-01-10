@@ -1,10 +1,20 @@
 const fs = require('fs');
 
 const CONFIG_FILE = './config.json'
-
+const RAW_CONFIGURATION = '{"sequence":[],"hidden":[]}'
 
 module.exports = {
     loadConfig : function () {
+        if (!(fs.existsSync(CONFIG_FILE))) {
+            fs.writeFile(CONFIG_FILE, RAW_CONFIGURATION, (err) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                console.log("[API] Created Configuration file, because it did not exists")
+            })
+        }
+
         let data = fs.readFileSync(CONFIG_FILE), 
         config;
         config = JSON.parse(data);

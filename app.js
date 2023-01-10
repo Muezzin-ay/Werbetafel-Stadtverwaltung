@@ -31,6 +31,5 @@ var server = http.createServer(app).listen(PORT);
 console.log('[SERVER] Listening on Port ' + PORT);
 
 
-
 //Start Browser
 webdriver.startBrowser();
