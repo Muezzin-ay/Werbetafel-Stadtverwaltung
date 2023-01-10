@@ -32,4 +32,9 @@ console.log('[SERVER] Listening on Port ' + PORT);
 
 
 //Start Browser
-webdriver.startBrowser();
+try {
+    webdriver.startBrowser();
+} catch (error) {
+    console.log(error);
+}
+
