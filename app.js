@@ -35,6 +35,6 @@ console.log('[SERVER] Listening on Port ' + PORT);
 try {
     webdriver.startBrowser();
 } catch (error) {
-    console.log(error);
+    console.log('[SERVER] Could not start Browser!');
 }
 
