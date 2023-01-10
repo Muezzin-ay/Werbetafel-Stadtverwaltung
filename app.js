@@ -9,7 +9,8 @@ var http = require('http');
 var express = require('express');
 
 // Own modules
-const api = require('./modules/module_api')
+const api = require('./modules/module_api');
+const webdriver = require('./modules/webdriver');
 
 // Settings
 const PORT = 8084;
@@ -28,3 +29,8 @@ app.use('/', express.static(__dirname + "/public"))
 
 var server = http.createServer(app).listen(PORT);
 console.log('[SERVER] Listening on Port ' + PORT);
+
+
+
+//Start Browser
+webdriver.startBrowser();
